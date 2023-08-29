@@ -1,0 +1,27 @@
+*{
+    margin: 0 auto;
+
+}
+header{
+    background-color: #00004b;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 19px;
+    font-family:Arial, Helvetica, sans-serif
+
+
+}
+
+div:hover{
+color: rgb(0, 238, 255);
+cursor: pointer;
+}
+
+
+
+img{
+    width: 100px;
+    height: 85px;
+}
