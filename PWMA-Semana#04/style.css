@@ -1,0 +1,51 @@
+*{
+    margin: 0 auto;
+   
+
+}
+header{
+    background-color: #00004b;
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 19px;
+    font-family:Arial, Helvetica, sans-serif
+
+}
+
+.txt{
+    color: white;
+    font-size: 33px;
+    
+
+}
+
+p{
+    color: white;
+    font-size: 16px;
+    width: 40%;
+}
+
+.caixa{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+img{
+    width: 140px;
+    height: 85px;
+}
+
+main{
+    background-image: url("https://championsexperiencebrasil.com.br/wp-content/themes/champions/assets/images/UCL-2021-24-Horizontal-RGB-LR.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:flex-end
+    
+}
