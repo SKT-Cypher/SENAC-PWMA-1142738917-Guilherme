@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro e Login de Usuário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="signup-form">
+            <h2>Cadastro de Usuário</h2>
+            <form id="registration-form">
+                <div class="form-group">
+                    <label for="signup-username">Nome de usuário:</label>
+                    <input type="text" id="signup-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Senha:</label>
+                    <input type="password" id="signup-password" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cadastrar">
+                </div>
+            </form>
+        </div>
+        <div id="login-form">
+            <h2>Login</h2>
+            <form id="login-validation-form">
+                <div class="form-group">
+                    <label for="login-username">Nome de usuário:</label>
+                    <input type="text" id="login-username" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Senha:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Entrar">
+                </div>
+            </form>
+            <div id="login-status"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
