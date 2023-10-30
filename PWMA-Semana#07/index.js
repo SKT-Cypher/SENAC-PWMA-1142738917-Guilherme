@@ -18,7 +18,6 @@ const database = [
       listaTimes.appendChild(itemLista);
     }
   }
-  
   // Chamamos a função para exibir os times quando a página carregar
   window.addEventListener('load', exibirTimes);
   
