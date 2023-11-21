@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="FPF2.png">
+    <title>Champions League - Principais Times</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+
+      header {
+        width: 100%;
+        background-color: #2101b0;
+        padding: 15px 0;
+        text-align: center;
+      }
+
+      header img {
+        height: 80px;
+      }
+
+      h1 {
+        color: antiquewhite;
+        font-size: 24px;
+        margin-top: 20px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      li {
+        background-color: #e7e1e1;
+        border: 5px solid #f9f7f7;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        width: 300px;
+      }
+
+      li:hover {
+        
+        cursor: pointer;
+      }
+
+      a {
+        text-decoration: none;
+        color: #f2f2f2;
+        font-weight: bold;
+      }
+
+      a:hover {
+        color: #0e0303;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <a href="FPF.html"><img src="champio.png" alt="menu" /></a>
+      <h1>Champions League - Principais Times</h1>
+    </header>
+
+    <ul id="lista-times"></ul>
+
+    <script>
+      const database = [
+        { id: 1, nome: "Real Madrid", Presidente: "Florentino Pérez", Estadio: "Santiago Bernabéu" },
+        { id: 2, nome: "Milan", Presidente: "Paolo Scaroni", Estadio: "Giuseppe Meazza" },
+        { id: 3, nome: "Liverpool", Presidente: "Tom Werner", Estadio: "Anfield" },
+        { id: 4, nome: "Bayern de Munique", Presidente: "Jan-Christian Dreesen", Estadio: "Allianz Arena" },
+        { id: 5, nome: "Barcelona", Presidente: "Joan Laporta", Estadio: "Camp Nou" },
+        { id: 6, nome: "Manchester City", Presidente: "Khaldoon Al Mubarak", Estadio: "Etihad Stadium" },
+        { id: 7, nome: "Juventus", Presidente: "Andrea Agnelli", Estadio: "Allianz Stadium" },
+        { id: 8, nome: "Paris Saint-Germain", Presidente: "Nasser Al-Khelaifi", Estadio: "Parc des Princes" },
+        { id: 9, nome: "Chelsea", Presidente: "Bruce Buck", Estadio: "Stamford Bridge" },
+        { id: 10, nome: "Borussia Dortmund", Presidente: "Reinhard Rauball", Estadio: "Signal Iduna Park" },
+      ];
+
+      function exibirTimes() {
+        const listaTimes = document.getElementById("lista-times");
+
+        // Limpar a lista antes de adicionarmos os times novamente
+        listaTimes.innerHTML = "";
+
+        // Iterar sobre o array de times e criar elementos <li> para cada time
+        for (const time of database) {
+          const itemLista = document.createElement("li");
+          itemLista.innerHTML = `<strong>Nome:</strong> ${time.nome}<br><strong>Presidente:</strong> ${time.Presidente}<br><strong>Estádio:</strong> ${time.Estadio}`;
+          listaTimes.appendChild(itemLista);
+        }
+      }
+
+      // Chamamos a função para exibir os times quando a página carregar
+      window.addEventListener("load", exibirTimes);
+    </script>
+  </body>
+</html>

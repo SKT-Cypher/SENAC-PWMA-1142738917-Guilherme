@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login JS</title>
+    <link rel="icon" type="image/png" href="FPF2.png">
+   
+    <style>
+    * {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url('2.jpg');
+  background-size: cover;
+  background-position: center;
+  font-family: 'Arial', sans-serif;
+}
+
+header {
+  width: 100%;
+  background-color: #1b365d;
+  padding: 15px;
+  text-align: center;
+}
+
+header h1 {
+  color: #fff;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  width: 300px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  margin: auto; /* Adicionado para centralizar horizontalmente */
+  margin-top: 50px; /* Adicionado para centralizar verticalmente */
+}
+
+.input-group {
+  margin: 10px 0;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffd700;
+  border: none;
+  color: #1b365d;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #1b365d;
+  color: #fff;
+}
+
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <center>
+      <a href="FPF.html"><img src="champio.png" alt="menu" height="100" /></a>
+      <h1>Cadastro</h1>
+    </center>
+    </header>
+
+    <form id="loginForm">
+        <h3>Login</h3>
+        <input type="text" placeholder="Login" id="login" />
+        <input type="password" placeholder="Senha" id="senha" />
+        <input type="submit" onclick="logar(); return false" />
+        <!-- Formulário de login -->
+    </form>
+
+    <form id="cadastroForm">
+      <!-- Formulário de cadastro -->
+      <h3>Cadastro</h3>
+      <input type="text" placeholder="Novo login" id="novoLogin" />
+      <input type="password" placeholder="Nova senha" id="novaSenha" />
+      <input type="submit" value="Cadastrar" />
+    </form>
+
+    <script>
+      // Simulação de um "banco de dados" em um array
+      var usuarios = [
+        { login: "admin", senha: "admin" },
+        { login: "user", senha: "password" },
+        // Adicione mais usuários conforme necessário
+      ];
+
+      // Função para cadastrar novo usuário
+      function cadastrarUsuario() {
+        var novoLogin = document.getElementById("novoLogin").value;
+        var novaSenha = document.getElementById("novaSenha").value;
+
+        // Verifica se o usuário já existe
+        var usuarioExistente = usuarios.find(function (usuario) {
+          return usuario.login === novoLogin;
+        });
+
+        if (usuarioExistente) {
+          alert("Este login já está em uso. Por favor, escolha outro.");
+        } else {
+          // Adiciona o novo usuário ao "banco de dados" (array)
+          usuarios.push({ login: novoLogin, senha: novaSenha });
+          alert("Cadastro realizado com sucesso!");
+          // Você pode adicionar lógica para redirecionar o usuário para onde quiser após o cadastro
+        }
+      }
+
+      // Event listener para o formulário de cadastro
+      document.getElementById("cadastroForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita o comportamento padrão do formulário
+        cadastrarUsuario();
+      });
+
+      // Função para realizar o login
+      function logar() {
+        var login = document.getElementById("login").value;
+        var senha = document.getElementById("senha").value;
+
+        // Verifica se as credenciais estão corretas
+        var usuarioEncontrado = usuarios.find(function (usuario) {
+          return usuario.login === login && usuario.senha === senha;
+        });
+
+        if (usuarioEncontrado) {
+          alert("Sucesso");
+          // Aqui você pode redirecionar para outra página após o login
+        } else {
+          alert("Usuário ou senha incorretos");
+        }
+      }
+
+      // Event listener para o formulário de login
+      document.getElementById("loginForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Evita o comportamento padrão do formulário
+        logar();
+      });
+    </script>
+  </body>
+</html>

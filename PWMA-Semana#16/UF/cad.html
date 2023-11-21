@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    section {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #lista {
+      margin-top: 20px;
+    }
+
+    #listaClientes li {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+    }
+
+    #listaClientes li:hover {
+      background-color: #f2f2f2;
+    }
+  </style>
+  <title>Cadastro de Clientes</title>
+</head>
+<body>
+  <section id="cadastro">
+    <h2>Incluir Cliente</h2>
+    <form id="formCliente">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" required>
+
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" required pattern="[0-9]{5}-[0-9]{3}">
+
+      <button type="button" onclick="incluirCliente()">Incluir Cliente</button>
+    </form>
+  </section>
+
+  <section id="listaClientes">
+    <h2>Lista de Clientes</h2>
+    <ul id="lista"></ul>
+  </section>
+
+  <script>
+    let clientes = [];
+
+    function incluirCliente() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const telefone = document.getElementById("telefone").value;
+      const cep = document.getElementById("cep").value;
+
+      const cepRegex = /^[0-9]{5}-[0-9]{3}$/;
+      if (!cepRegex.test(cep)) {
+        alert("Formato de CEP inválido. Use nnnnn-ccc, onde nnnnn é o número do CEP e ccc é o complemento.");
+        return;
+      }
+
+      const endereco = buscarEnderecoNoBanco(cep);
+
+      const cliente = {
+        nome: nome,
+        email: email,
+        telefone: telefone,
+        cep: cep,
+        endereco: endereco,
+      };
+
+      clientes.push(cliente);
+
+      document.getElementById("formCliente").reset();
+
+      atualizarListaClientes();
+    }
+
+    function buscarEnderecoNoBanco(cep) {
+      // Simulação: apenas retornar uma string fixa
+      return "Endereço Simulado";
+    }
+
+    function atualizarListaClientes() {
+      const lista = document.getElementById("lista");
+      lista.innerHTML = "";
+
+      if (clientes.length === 0) {
+        const mensagem = document.createElement("li");
+        mensagem.textContent = "Nenhum cliente cadastrado.";
+        lista.appendChild(mensagem);
+      } else {
+        clientes.forEach(function (cliente) {
+          const itemLista = document.createElement("li");
+          itemLista.textContent = `Nome: ${cliente.nome}, Email: ${cliente.email}, Telefone: ${cliente.telefone}, CEP: ${cliente.cep}, Endereço: ${cliente.endereco}`;
+          lista.appendChild(itemLista);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
